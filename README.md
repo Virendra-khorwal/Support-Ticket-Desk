@@ -6,6 +6,8 @@ Project Description
 ### Deployed on 
 Badges
 
+### Dependencies
+![Dependencies](./package_used.png)
 
 ### Screenshot
 ![Home Page](./homepage.png)

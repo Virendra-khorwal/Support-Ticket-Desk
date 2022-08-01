@@ -11,8 +11,9 @@ const NewTicket = () => {
   const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.tickets
   );
-
+  // eslint-disable-next-line
   const [name, setName] = useState(user.name);
+  // eslint-disable-next-line
   const [email, setEmail] = useState(user.email);
   const [product, setProduct] = useState("iPhone");
   const [description, setDescription] = useState("");
@@ -21,29 +22,29 @@ const NewTicket = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isError) {
-      toast.error(message)
+    if (isError) {
+      toast.error(message);
     }
-    if(isSuccess) {
-      dispatch(reset())
-      navigate('/tickets')
+    if (isSuccess) {
+      dispatch(reset());
+      navigate("/tickets");
     }
 
-    dispatch(reset())
-  }, [dispatch, isError, isSuccess, navigate, message])
+    dispatch(reset());
+  }, [dispatch, isError, isSuccess, navigate, message]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(createTicket({ product, description }));
   };
 
-  if(isLoading) {
-    return <Spinner/> 
+  if (isLoading) {
+    return <Spinner />;
   }
 
   return (
     <div>
-      <BackButton url='/'/>
+      <BackButton url="/" />
       <section className="heading">
         <h1>Create New Ticket</h1>
         <p>Please fill out the form below</p>
@@ -57,7 +58,7 @@ const NewTicket = () => {
           <label htmlFor="email">Customer Email</label>
           <input type="email" className="form-control" value={email} disabled />
         </div>
-        
+
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="product">Product</label>

@@ -31,7 +31,7 @@ const getNotes = asyncHandler(async (req, res) => {
 // @desc Create a ticket note
 // @route POST /api/tickets/:ticketId/notes
 // @access Private
-const addNotes = asyncHandler(async (req, res) => {
+const addNote = asyncHandler(async (req, res) => {
     // Get user using the id in the JWT
     const user = await User.findById(req.user.id)
 
@@ -50,13 +50,14 @@ const addNotes = asyncHandler(async (req, res) => {
     const note = await Note.create({ 
         text: req.body.text,
         isStaff: false,
-        ticket: req.params.ticketId,
-        ticket: req.params.ticketId })
+        ticket: req.params.ticketId ,
+        user: req.user.id
+        })
 
     res.status(200).json(note)
 })
 
 module.exports = {
     getNotes, 
-    addNotes,
+    addNote,
 }
